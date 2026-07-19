@@ -34,33 +34,52 @@
             -webkit-box-orient: vertical;  
             overflow: hidden;         /* Hides the remaining text */
         }
+
+        .row {
+            align-items: center;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .container {
+            margin-inline: auto;
+            max-width: 1024px;
+        }
     </style>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <ul class="category-list">
-        <li class="category-list__item"><a href="/" class="category__link">All</a></li>
-        <% categories.forEach((category) => { %>
-            <li class="category-list__item">
-                <a href="/?category=<%= category.id %>" class="category__link"><%= category.name %></a>
-            </li>
-        <% }) %>
-    </ul>
+    <main>
+        <section>
+            <div class="container">
+                <h1><%= title %></h1>
+                <ul class="category-list">
+                    <li class="category-list__item"><a href="/" class="category__link">All</a></li>
+                    <% categories.forEach((category) => { %>
+                        <li class="category-list__item">
+                            <a href="/?category=<%= category.id %>" class="category__link"><%= category.name %></a>
+                        </li>
+                    <% }) %>
+                </ul>
 
-    <h2>Items</h2>
-    <a href="/new/item">Add Item</a>
-    <ul class="item-list">
-        <% if (items && items.length!==0) { %>
-            <% items.forEach((item) => { %>
-                <li class="item-list__item">
-                    <%- include("./items/item.ejs", {item: item}) %>
-                </li>
-            <% }) %>
-        <% } else { %>
-            <li class="item-list__item">
-                <p>No items to display</p>
-            </li>
-            <% } %>
-    </ul>
+                <div class="row">
+                    <h2>Items</h2>
+                    <a href="/new/item">Add Item</a>
+                </div>
+                <ul class="item-list">
+                    <% if (items && items.length!==0) { %>
+                        <% items.forEach((item) => { %>
+                            <li class="item-list__item">
+                                <%- include("./items/item.ejs", {item: item}) %>
+                            </li>
+                        <% }) %>
+                    <% } else { %>
+                        <li class="item-list__item">
+                            <p>No items to display</p>
+                        </li>
+                        <% } %>
+                </ul>
+            </div>
+        </section>
+    </main>
   </body>
 </html>
