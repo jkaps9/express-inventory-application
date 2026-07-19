@@ -16,17 +16,17 @@
                 <label for="category">Category</label>
                 <select name="category" id="category">
                     <% categories.forEach((category)=>{%>
-                        <option value="<%= category.name %>"><%= category.name %></option>
+                        <option value="<%= category.name %>" <%= category.name === item.category_name ? 'selected' : '' %>><%= category.name %></option>
                     <% }) %>
                 </select>
             </div>
           <div class="input-group">
             <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Item Name" />
+            <input type="text" id="name" name="name" placeholder="Item Name" value="<%= item.name %>"/>
           </div>
           <div class="input-group">
             <label for="price">Price</label>
-            <input type="number" step="0.01" id="price" name="price" />
+            <input type="number" step="0.01" id="price" name="price"  value="<%= item.price %>"/>
           </div>
           <div class="input-group">
             <label for="description">Description</label>
@@ -35,6 +35,7 @@
               id="description"
               placeholder="Describe the item..."
               rows="3"
+               value="<%= item.description %>"
             ></textarea>
           </div>
           <button type="submit" class="btn">Submit</button>

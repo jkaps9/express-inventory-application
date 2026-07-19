@@ -69,7 +69,12 @@ async function deleteItem(req, res) {
 
 async function createUpdateItemForm(req, res) {
   const categories = await db.getCategories();
-  res.render("updateItem", { title: "Update Item", categories: categories });
+  const item = await db.getItemById(req.params.id);
+  res.render("updateItem", {
+    title: "Update Item",
+    categories: categories,
+    item: item,
+  });
 }
 
 async function updateItem(req, res) {
