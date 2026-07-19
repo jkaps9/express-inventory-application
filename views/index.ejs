@@ -30,6 +30,7 @@
             max-width: 65ch;
             display: -webkit-box;
             -webkit-line-clamp: 3;    /* Change this number to limit lines */
+            line-clamp: 3;
             -webkit-box-orient: vertical;  
             overflow: hidden;         /* Hides the remaining text */
         }
@@ -47,13 +48,19 @@
 
     <h2>Items</h2>
     <ul class="item-list">
-        <% items.forEach((item) => { %>
+        <% if (items) { %>
+            <% items.forEach((item) => { %>
+                <li class="item-list__item">
+                    <h3 class="item__name"><%= item.name %></h3>
+                    <p class="item__price"><%= Number(item.price).toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></p>
+                    <p class="item__description"><%= item.description %></p>
+                </li>
+            <% }) %>
+        <% } else { %>
             <li class="item-list__item">
-                <h3 class="item__name"><%= item.name %></h3>
-                <p class="item__price"><%= Number(item.price).toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></p>
-                <p class="item__description"><%= item.description %></p>
+                <p>No items to display</p>
             </li>
-        <% }) %>
+            <% } %>
     </ul>
   </body>
 </html>

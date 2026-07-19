@@ -16,7 +16,18 @@ async function getAllItems() {
   return rows;
 }
 
+async function getItemByCategory(categoryId) {
+  const { rows } = await pool.query(`
+            SELECT c.name, i.name, i.description, i.price 
+            FROM items AS i
+            LEFT JOIN categories AS c
+            ON i.name = c.name
+            WHERE c.id = ${categoryId};
+        `);
+}
+
 module.exports = {
   getCategories,
   getAllItems,
+  getItemByCategory,
 };
