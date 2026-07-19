@@ -1,3 +1,35 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+:root {
+  --color-bg: #fafafa;
+  --color-bg-light: #efd6ac;
+  --color-bg-dark: #04151f;
+  --color-text-main: #04151f;
+  --color-text-light: #efd6ac;
+  --color-primary: #183a37;
+  --color-accent-1: #c44900;
+  --color-accent-2: #432534;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-primary);
+}
+
 a {
   color: currentColor;
   text-decoration: none;
@@ -22,4 +54,27 @@ button:hover {
 .container {
   margin-inline: auto;
   max-width: 1024px;
+}
+
+.category-list {
+  display: flex;
+  gap: 1rem;
+}
+.category-list__item {
+  font-weight: 600;
+  min-width: 0;
+}
+
+.category__link:hover {
+  color: #1a3edf;
+  text-decoration: underline;
+}
+
+.item__description {
+  max-width: 65ch;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Change this number to limit lines */
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden; /* Hides the remaining text */
 }
