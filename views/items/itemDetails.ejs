@@ -23,7 +23,7 @@
         <div class="container">
           <a href="/">Go Home</a>
           <div class="row">
-            <form action="/item/update/?id=<%= item.id %>" method="POST" style="display:block;">
+            <form action="/item/update/<%= item.id %>" method="GET" style="display:block;">
                 <button type="submit" style="background-color: blue; color: white; border: 1px solid black; padding: 0.5em 0.75em;">Update Item</button>
             </form>
             <form action="/item/delete/?id=<%= item.id %>" method="POST" style="display:block;">

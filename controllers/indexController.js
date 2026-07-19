@@ -67,6 +67,15 @@ async function deleteItem(req, res) {
   res.redirect("/");
 }
 
+async function createUpdateItemForm(req, res) {
+  const categories = await db.getCategories();
+  res.render("updateItem", { title: "Update Item", categories: categories });
+}
+
+async function updateItem(req, res) {
+  res.redirect("/");
+}
+
 module.exports = {
   createIndex,
   createDetail,
@@ -74,4 +83,6 @@ module.exports = {
   validateItem,
   addItem,
   deleteItem,
+  createUpdateItemForm,
+  updateItem,
 };
