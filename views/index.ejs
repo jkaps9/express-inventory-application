@@ -39,6 +39,7 @@
   <body>
     <h1><%= title %></h1>
     <ul class="category-list">
+        <li class="category-list__item"><a href="/" class="category__link">All</a></li>
         <% categories.forEach((category) => { %>
             <li class="category-list__item">
                 <a href="/?category=<%= category.id %>" class="category__link"><%= category.name %></a>
@@ -51,9 +52,7 @@
         <% if (items && items.length!==0) { %>
             <% items.forEach((item) => { %>
                 <li class="item-list__item">
-                    <h3 class="item__name"><%= item.name %></h3>
-                    <p class="item__price"><%= Number(item.price).toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></p>
-                    <p class="item__description"><%= item.description %></p>
+                    <%- include("./items/item.ejs", {item: item}) %>
                 </li>
             <% }) %>
         <% } else { %>
