@@ -1,4 +1,12 @@
+const { body, validationResult, matchedData } = require("express-validator");
 const db = require("../db/queries");
+
+const validateItem = [
+  body("category").isLength({ min: 1 }).withMessage(`Category required`),
+  body("name").isLength({ min: 1 }).withMessage(`Name required`),
+  body("price").isNumeric({ min: 0 }).withMessage("Price must be positive"),
+  body("description").isLength({ min: 1 }).withMessage(`Category required`),
+];
 
 async function createIndex(req, res) {
   const categories = await db.getCategories();
@@ -36,8 +44,26 @@ async function createNewItemForm(req, res) {
   });
 }
 
+async function addItem(req, res) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const categories = await db.getCategories();
+    return res.status(400).render("createItem", {
+      title: "Create New Item",
+      categories: categories,
+      errors: errors.array(),
+    });
+  }
+
+  const { category, name, price, description } = matchedData(req);
+  await db.addItem({ category, name, price, description });
+
+  res.redirect("/");
+}
+
 module.exports = {
   createIndex,
   createDetail,
   createNewItemForm,
+  addItem,
 };

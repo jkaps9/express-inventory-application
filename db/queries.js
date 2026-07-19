@@ -40,9 +40,16 @@ async function getItemById(id) {
   return rows[0];
 }
 
+async function addItem(category, name, price, description) {
+  await pool.query(`INSERT INTO items (category_id, name, description, price)
+VALUES
+((SELECT id from categories WHERE name = '${category}'), '${name}', '${description}', ${price});`);
+}
+
 module.exports = {
   getCategories,
   getAllItems,
   getItemByCategory,
   getItemById,
+  addItem,
 };
