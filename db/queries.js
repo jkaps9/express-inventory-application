@@ -22,8 +22,10 @@ async function getItemByCategory(categoryId) {
             FROM items AS i
             LEFT JOIN categories AS c
             ON i.name = c.name
-            WHERE c.id = ${categoryId};
+            WHERE i.category_id = ${categoryId};
         `);
+
+  return rows;
 }
 
 module.exports = {
