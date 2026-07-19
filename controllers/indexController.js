@@ -78,6 +78,19 @@ async function createUpdateItemForm(req, res) {
 }
 
 async function updateItem(req, res) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const categories = await db.getCategories();
+    res.status(400).render("updateItem", {
+      title: "Update Item",
+      categories: categories,
+      errors: errors.array(),
+    });
+  }
+
+  const { category, name, price, description } = matchedData(req);
+
+  await db.updateItem(req.query.id, { category, name, price, description });
   res.redirect("/");
 }
 

@@ -12,7 +12,7 @@
   <body>
     <a href="/">Go Home</a>
     <%- include("partials/errors.ejs") %>
-    <form method="POST" action="/item/update">
+    <form method="POST" action="/item/update/?id=<%= item.id %>">
       <header>
         <h1>Update Item</h1>
       </header>

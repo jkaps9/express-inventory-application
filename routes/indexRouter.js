@@ -18,6 +18,6 @@ indexRouter.get("/new/item", createNewItemForm);
 indexRouter.post("/new/item", validateItem, addItem);
 indexRouter.post("/item/delete", deleteItem);
 indexRouter.get("/item/update/:id", createUpdateItemForm);
-indexRouter.post("/item/update", updateItem);
+indexRouter.post("/item/update", validateItem, updateItem);
 
 module.exports = indexRouter;
