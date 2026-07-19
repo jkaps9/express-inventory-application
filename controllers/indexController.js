@@ -94,6 +94,12 @@ async function updateItem(req, res) {
   res.redirect("/");
 }
 
+async function createNewCategoryForm(req, res) {
+  res.render("createCategory", {
+    title: "Create New Category",
+  });
+}
+
 module.exports = {
   createIndex,
   createDetail,
@@ -103,4 +109,5 @@ module.exports = {
   deleteItem,
   createUpdateItemForm,
   updateItem,
+  createNewCategoryForm,
 };
