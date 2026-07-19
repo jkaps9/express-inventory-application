@@ -28,7 +28,16 @@ async function createDetail(req, res) {
   }
 }
 
+async function createNewItemForm(req, res) {
+  const categories = await db.getCategories();
+  res.render("createItem", {
+    title: "Create New Item",
+    categories: categories,
+  });
+}
+
 module.exports = {
   createIndex,
   createDetail,
+  createNewItemForm,
 };
