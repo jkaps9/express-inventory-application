@@ -2,6 +2,12 @@
   <head>
     <link rel="stylesheet" href="/styles.css" />
     <title><%= title %></title>
+    <style>
+        textarea {
+            field-sizing: content;
+            max-width: 65ch;
+        }
+    </style>
   </head>
   <body>
     <a href="/">Go Home</a>
@@ -34,9 +40,7 @@
               name="description"
               id="description"
               placeholder="Describe the item..."
-              rows="3"
-               value="<%= item.description %>"
-            ></textarea>
+            ><%= item.description %></textarea>
           </div>
           <button type="submit" class="btn">Submit</button>
         </section>
