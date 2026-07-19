@@ -20,4 +20,6 @@ indexRouter.post("/item/delete", deleteItem);
 indexRouter.get("/item/update/:id", createUpdateItemForm);
 indexRouter.post("/item/update", validateItem, updateItem);
 
+// TODO: add CRUD for categories
+
 module.exports = indexRouter;
