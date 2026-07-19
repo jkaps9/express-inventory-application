@@ -62,10 +62,16 @@ async function addItem(req, res) {
   res.redirect("/");
 }
 
+async function deleteItem(req, res) {
+  await db.deleteItem(req.query.id);
+  res.redirect("/");
+}
+
 module.exports = {
   createIndex,
   createDetail,
   createNewItemForm,
   validateItem,
   addItem,
+  deleteItem,
 };

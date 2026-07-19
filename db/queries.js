@@ -46,10 +46,15 @@ VALUES
 ((SELECT id from categories WHERE name = '${category}'), '${name.replace("'", "''")}', '${description.replace("'", "''")}', ${price});`);
 }
 
+async function deleteItem(id) {
+  await pool.query(`DELETE FROM items WHERE id=${id};`);
+}
+
 module.exports = {
   getCategories,
   getAllItems,
   getItemByCategory,
   getItemById,
   addItem,
+  deleteItem,
 };
