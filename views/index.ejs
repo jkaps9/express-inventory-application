@@ -3,16 +3,35 @@
     <link rel="stylesheet" href="/styles.css" />
     <title><%= title %></title>
     <style>
-        body {
-            line-height: 1.6;
-        }
-
         ul {
             list-style-type: none;
         }
 
+        .category-list {
+            display: flex;
+            gap: 1rem;
+        }
         .category-list__item {
-            font-weight: 700;
+            font-weight: 600;
+            min-width: 0;
+        }
+
+        .category__link {
+            color: currentColor;
+            text-decoration: none;
+        }
+
+        .category__link:hover {
+            color: #1a3edf;
+            text-decoration: underline;
+        }
+
+        .item__description {
+            max-width: 65ch;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;    /* Change this number to limit lines */
+            -webkit-box-orient: vertical;  
+            overflow: hidden;         /* Hides the remaining text */
         }
     </style>
   </head>
@@ -21,15 +40,18 @@
     <ul class="category-list">
         <% categories.forEach((category) => { %>
             <li class="category-list__item">
-                <%= category.name %>
+                <a href="/?category=<%= category.id %>" class="category__link"><%= category.name %></a>
             </li>
         <% }) %>
     </ul>
 
+    <h2>Items</h2>
     <ul class="item-list">
         <% items.forEach((item) => { %>
             <li class="item-list__item">
-                <%= item.name %>
+                <h3 class="item__name"><%= item.name %></h3>
+                <p class="item__price"><%= Number(item.price).toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></p>
+                <p class="item__description"><%= item.description %></p>
             </li>
         <% }) %>
     </ul>
