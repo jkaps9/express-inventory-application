@@ -48,7 +48,7 @@ async function addItem(req, res) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     const categories = await db.getCategories();
-    return res.status(400).render("createItem", {
+    res.status(400).render("createItem", {
       title: "Create New Item",
       categories: categories,
       errors: errors.array(),
@@ -56,6 +56,7 @@ async function addItem(req, res) {
   }
 
   const { category, name, price, description } = matchedData(req);
+
   await db.addItem({ category, name, price, description });
 
   res.redirect("/");
@@ -65,5 +66,6 @@ module.exports = {
   createIndex,
   createDetail,
   createNewItemForm,
+  validateItem,
   addItem,
 };
