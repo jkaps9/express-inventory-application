@@ -5,5 +5,12 @@
   </head>
   <body>
     <h1><%= title %></h1>
+    <ul class="category-list">
+        <% categories.forEach((category) => { %>
+            <li class="category-list__item">
+                <%= category.name %>
+            </li>
+        <% }) %>
+    </ul>
   </body>
 </html>
