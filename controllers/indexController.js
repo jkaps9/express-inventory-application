@@ -8,6 +8,18 @@ const validateItem = [
   body("description").isLength({ min: 1 }).withMessage(`Category required`),
 ];
 
+const validateCategory = [
+  body("name")
+    .isLength({ min: 1, max: 20 })
+    .withMessage(`Category name must be between 1 and 20 characters`)
+    .custom(async (value) => {
+      const existingCategory = await db.getCategory({ name: value });
+      if (existingCategory.length !== 0) {
+        throw new Error("Category already exists");
+      }
+    }),
+];
+
 async function createIndex(req, res) {
   const categories = await db.getCategories();
   if (Object.keys(req.query).length === 0) {
@@ -100,14 +112,30 @@ async function createNewCategoryForm(req, res) {
   });
 }
 
+async function addCategory(req, res) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    res.status(400).render("createCategory", {
+      title: "Create New Category",
+      errors: errors.array(),
+    });
+  }
+  const { name } = matchedData(req);
+
+  await db.addCategory({ name });
+  res.redirect("/");
+}
+
 module.exports = {
   createIndex,
   createDetail,
   createNewItemForm,
   validateItem,
+  validateCategory,
   addItem,
   deleteItem,
   createUpdateItemForm,
   updateItem,
   createNewCategoryForm,
+  addCategory,
 };

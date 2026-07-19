@@ -57,6 +57,20 @@ async function updateItem(id, { category, name, price, description }) {
         `);
 }
 
+async function addCategory({ name }) {
+  await pool.query(
+    `INSERT INTO categories (name)
+    VALUES ('${name}');`,
+  );
+}
+
+async function getCategory({ name }) {
+  const { rows } = await pool.query(
+    `SELECT * FROM categories where name = '${name}';`,
+  );
+  return rows;
+}
+
 module.exports = {
   getCategories,
   getAllItems,
@@ -65,4 +79,6 @@ module.exports = {
   addItem,
   deleteItem,
   updateItem,
+  addCategory,
+  getCategory,
 };
