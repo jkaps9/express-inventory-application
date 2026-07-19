@@ -19,6 +19,16 @@ async function createIndex(req, res) {
   }
 }
 
+async function createDetail(req, res) {
+  if (Object.keys(req.query).length === 0) {
+    res.redirect("/");
+  } else {
+    const item = await db.getItemById(req.query.id);
+    res.render("items/itemDetails", { item: item });
+  }
+}
+
 module.exports = {
   createIndex,
+  createDetail,
 };
