@@ -40,6 +40,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: var(--color-accent-1);
+}
+
 ul {
   list-style-type: none;
   padding: 0;
@@ -71,23 +75,28 @@ textarea {
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
   padding: 1rem 2rem;
+  transition: 0.3s transform;
   width: fit-content;
+
+  a:hover {
+    color: unset;
+  }
+}
+
+.card:hover {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transform: scale(1.01);
 }
 
 .category-list {
   display: flex;
   gap: 1rem;
 }
+
 .category-list__item {
   font-weight: 600;
   min-width: 0;
 }
-
-.category__link:hover {
-  color: #1a3edf;
-  text-decoration: underline;
-}
-
 .item-list {
   display: flex;
   flex-direction: column;
