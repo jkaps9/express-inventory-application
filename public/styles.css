@@ -88,6 +88,16 @@ textarea {
   text-decoration: underline;
 }
 
+.item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.item-list__item {
+  max-width: 500px;
+}
+
 .item__description {
   max-width: 65ch;
   display: -webkit-box;
@@ -101,5 +111,12 @@ textarea {
   .item__description {
     -webkit-line-clamp: unset; /* Change this number to limit lines */
     line-clamp: unset;
+  }
+}
+
+@media (min-width: 768px) {
+  .item-list {
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 }
