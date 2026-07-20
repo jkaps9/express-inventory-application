@@ -26,6 +26,7 @@ async function createIndex(req, res) {
     const items = await db.getAllItems();
     res.render("index", {
       title: "JKaps9 Electronics",
+      category: "All Items",
       categories: categories,
       items: items,
     });
@@ -33,6 +34,7 @@ async function createIndex(req, res) {
     const items = await db.getItemByCategory(req.query.category);
     res.render("index", {
       title: "JKaps9 Electronics",
+      category: items.length > 0 ? items[0].category_name : "",
       categories: categories,
       items: items,
     });

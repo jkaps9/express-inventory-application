@@ -18,10 +18,10 @@ async function getAllItems() {
 
 async function getItemByCategory(categoryId) {
   const { rows } = await pool.query(`
-            SELECT c.name, i.id, i.name, i.description, i.price 
+            SELECT c.name as category_name, i.id, i.name, i.description, i.price 
             FROM items AS i
             LEFT JOIN categories AS c
-            ON i.name = c.name
+            ON i.category_id = c.id
             WHERE i.category_id = ${categoryId};
         `);
 
