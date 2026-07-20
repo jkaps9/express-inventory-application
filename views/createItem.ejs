@@ -14,21 +14,21 @@
             </header>
             <main>
               <section>
-                  <div class="input-group">
-                      <label for="category">Category</label>
-                      <select name="category" id="category">
-                          <% categories.forEach((category)=>{%>
-                              <option value="<%= category.name %>"><%= category.name %></option>
-                          <% }) %>
-                      </select>
-                  </div>
-                <div class="input-group">
+                 <div class="input-group">
                   <label for="name">Name</label>
                   <input type="text" id="name" name="name" placeholder="Item Name" />
                 </div>
                 <div class="input-group">
+                    <label for="category">Category</label>
+                    <select name="category" id="category">
+                        <% categories.forEach((category)=>{%>
+                            <option value="<%= category.name %>"><%= category.name %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="input-group">
                   <label for="price">Price</label>
-                  <input type="number" step="0.01" id="price" name="price" />
+                  <input type="number" step="0.01" id="price" name="price" placeholder="0.00" />
                 </div>
                 <div class="input-group">
                   <label for="description">Description</label>
