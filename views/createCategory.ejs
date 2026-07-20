@@ -3,26 +3,32 @@
     <%- include("partials/head.ejs") %>
   </head>
   <body>
-    <a href="/">Go Home</a>
-    <%- include("partials/errors.ejs") %>
-    <form method="POST" action="/new/category">
-      <header>
-        <h1>Create New Category</h1>
-      </header>
-      <main>
-        <section>
-          <div class="input-group">
-            <label for="name">Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Category Name"
-            />
-          </div>
-          <button type="submit" class="btn">Submit</button>
-        </section>
-      </main>
-    </form>
+    <%- include("./partials/header.ejs") %>
+    <main>
+      <section>
+        <div class="container">
+          <%- include("partials/errors.ejs") %>
+          <form method="POST" action="/new/category">
+            <header>
+              <h2>Create New Category</h2>
+            </header>
+            <main>
+              <section>
+                <div class="input-group">
+                  <label for="name">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Category Name"
+                  />
+                </div>
+                <button type="submit" class="btn">Submit</button>
+              </section>
+            </main>
+          </form>
+        </div>
+      </section>
+    </main>
   </body>
 </html>

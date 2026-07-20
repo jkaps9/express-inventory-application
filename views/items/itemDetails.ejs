@@ -3,11 +3,10 @@
     <%- include("../partials/head.ejs") %>
   </head>
   <body>
+    <%- include("../partials/header.ejs") %>
     <main>
       <section id="item-details">
-        <div class="container">
-          <a href="/">Go Home</a>
-          
+        <div class="container">          
           <div class="card">
             <div class="row">
               <form action="/item/update/<%= item.id %>" method="GET" style="display:block;">

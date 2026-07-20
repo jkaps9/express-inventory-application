@@ -3,42 +3,48 @@
     <%- include("partials/head.ejs") %>
   </head>
   <body>
-    <a href="/">Go Home</a>
-    <%- include("partials/errors.ejs") %>
-    <form method="POST" action="/new/item">
-      <header>
-        <h1>Create New Item</h1>
-      </header>
-      <main>
-        <section>
-            <div class="input-group">
-                <label for="category">Category</label>
-                <select name="category" id="category">
-                    <% categories.forEach((category)=>{%>
-                        <option value="<%= category.name %>"><%= category.name %></option>
-                    <% }) %>
-                </select>
-            </div>
-          <div class="input-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Item Name" />
-          </div>
-          <div class="input-group">
-            <label for="price">Price</label>
-            <input type="number" step="0.01" id="price" name="price" />
-          </div>
-          <div class="input-group">
-            <label for="description">Description</label>
-            <textarea
-              name="description"
-              id="description"
-              placeholder="Describe the item..."
-              rows="3"
-            ></textarea>
-          </div>
-          <button type="submit" class="btn">Submit</button>
-        </section>
-      </main>
-    </form>
+    <%- include("./partials/header.ejs") %>
+    <main>
+      <section>
+        <div class="container">
+          <%- include("partials/errors.ejs") %>
+          <form method="POST" action="/new/item">
+            <header>
+              <h1>Create New Item</h1>
+            </header>
+            <main>
+              <section>
+                  <div class="input-group">
+                      <label for="category">Category</label>
+                      <select name="category" id="category">
+                          <% categories.forEach((category)=>{%>
+                              <option value="<%= category.name %>"><%= category.name %></option>
+                          <% }) %>
+                      </select>
+                  </div>
+                <div class="input-group">
+                  <label for="name">Name</label>
+                  <input type="text" id="name" name="name" placeholder="Item Name" />
+                </div>
+                <div class="input-group">
+                  <label for="price">Price</label>
+                  <input type="number" step="0.01" id="price" name="price" />
+                </div>
+                <div class="input-group">
+                  <label for="description">Description</label>
+                  <textarea
+                    name="description"
+                    id="description"
+                    placeholder="Describe the item..."
+                    rows="3"
+                  ></textarea>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+              </section>
+            </main>
+          </form>
+        </div>
+      </section>
+    </main>
   </body>
 </html>

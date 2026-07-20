@@ -3,10 +3,10 @@
     <%- include("partials/head.ejs") %>
   </head>
   <body>
+    <%- include("./partials/header.ejs") %>
     <main>
         <section>
             <div class="container">
-                <h1><%= title %></h1>
                 <ul class="category-list">
                     <li class="category-list__item"><a href="/" class="category__link">All</a></li>
                     <% categories.forEach((category) => { %>
@@ -16,7 +16,6 @@
                     <% }) %>
                     <li class="category-list__item"><a href="/new/category" class="category__link">+ Add</a></li>
                 </ul>
-
                 <div class="row">
                     <h2><%= category %></h2>
                     <a href="/new/item">Add Item</a>
