@@ -96,3 +96,10 @@ textarea {
   -webkit-box-orient: vertical;
   overflow: hidden; /* Hides the remaining text */
 }
+
+#item-details {
+  .item__description {
+    -webkit-line-clamp: unset; /* Change this number to limit lines */
+    line-clamp: unset;
+  }
+}
