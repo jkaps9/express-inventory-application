@@ -25,7 +25,9 @@
                     <% if (items && items.length!==0) { %>
                         <% items.forEach((item) => { %>
                             <li class="item-list__item card">
-                                <%- include("./items/item.ejs", {item: item}) %>
+                                <a href="/item?id=<%= item.id %>">
+                                    <%- include("./items/item.ejs", {item: item}) %>
+                                </a>
                             </li>
                         <% }) %>
                     <% } else { %>
