@@ -124,6 +124,17 @@ textarea {
     -webkit-line-clamp: unset; /* Change this number to limit lines */
     line-clamp: unset;
   }
+
+  .card:hover {
+    box-shadow: unset;
+    transform: scale(1);
+  }
+
+  .card {
+    .row {
+      justify-content: flex-end;
+    }
+  }
 }
 
 .input-form {
@@ -181,6 +192,26 @@ textarea {
   button:hover {
     background-color: var(--color-text-light);
     color: var(--color-accent-1);
+  }
+}
+
+.button-form {
+  button {
+    background: none;
+    border: none;
+
+    svg {
+      height: 20px;
+      width: 20px;
+    }
+  }
+
+  button:hover {
+    color: var(--color-primary);
+  }
+
+  .btn--delete:hover {
+    color: red;
   }
 }
 
