@@ -6,7 +6,6 @@
 }
 
 :root {
-  --color-bg: #fafafa;
   --color-bg-light: #efd6ac;
   --color-bg-dark: #04151f;
   --color-text-main: #04151f;
@@ -14,10 +13,12 @@
   --color-primary: #183a37;
   --color-accent-1: #c44900;
   --color-accent-2: #432534;
+  --color-surface-light: #fcf6ec;
+  --color-surface-dark: #0b2536;
 }
 
 body {
-  background-color: var(--color-bg);
+  background-color: var(--color-bg-light);
   color: var(--color-text-main);
 }
 
@@ -60,6 +61,13 @@ textarea {
 .container {
   margin-inline: auto;
   max-width: 1024px;
+}
+
+.card {
+  background-color: var(--color-surface-light);
+  border-radius: 4px;
+  padding: 1rem 2rem;
+  width: fit-content;
 }
 
 .category-list {
