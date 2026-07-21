@@ -102,13 +102,17 @@ textarea {
   min-width: 0;
 }
 .item-list {
+  align-items: center;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 1rem;
 }
 
 .item-list__item {
-  max-width: 500px;
+  height: stretch;
+  max-width: 400px;
+  width: stretch;
 }
 
 .item__description {
