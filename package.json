@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node --env-file=.env --watch app.js",
-    "populate-db": "node --env-file=.env db/populatedb.js",
+    "populate-db": "node db/populatedb.js",
     "start": "node app.js"
   },
   "keywords": [],
@@ -14,6 +14,7 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "dotenv": "^17.4.2",
     "ejs": "^6.0.1",
     "express": "^5.2.1",
     "express-validator": "^7.3.2",

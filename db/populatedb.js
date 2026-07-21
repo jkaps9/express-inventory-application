@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { Client } = require("pg");
 
 const SQL = `
@@ -45,18 +46,31 @@ VALUES
 `;
 
 async function main() {
-  console.log("seeding...");
+  const dbUrl = process.argv[2] || process.env.DEV_DB_URL;
+
+  if (!dbUrl) {
+    console.error("Error: No database URL provided.");
+    process.exit(1);
+  }
+
+  console.log(`Seeding to: ${dbUrl.split("@")[1] || "localhost"}...`);
+
+  const isProduction = !dbUrl.includes("localhost");
+
   const client = new Client({
-    host: "localhost", // or wherever the db is hosted
-    user: process.env.DATABASE_USER,
-    database: "my_store",
-    password: process.env.DATABASE_PASSWORD,
-    port: 5432, // The default port
+    connectionString: dbUrl,
+    ssl: isProduction ? { rejectUnauthorized: false } : false,
   });
-  await client.connect();
-  await client.query(SQL);
-  await client.end();
-  console.log("done");
+
+  try {
+    await client.connect();
+    await client.query(SQL);
+    console.log("done");
+  } catch (error) {
+    console.error("Error seeding database:", error);
+  } finally {
+    await client.end();
+  }
 }
 
 main();
