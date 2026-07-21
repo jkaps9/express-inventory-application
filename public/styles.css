@@ -102,7 +102,6 @@ textarea {
   min-width: 0;
 }
 .item-list {
-  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
