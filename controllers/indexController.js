@@ -5,7 +5,7 @@ const validateItem = [
   body("category").isLength({ min: 1 }).withMessage(`Category required`),
   body("name").isLength({ min: 1 }).withMessage(`Name required`),
   body("price").isNumeric({ min: 0 }).withMessage("Price must be positive"),
-  body("description").isLength({ min: 1 }).withMessage(`Category required`),
+  body("description").isLength({ min: 1 }).withMessage(`Description required`),
 ];
 
 const validateCategory = [
